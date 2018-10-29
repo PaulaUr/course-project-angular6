@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-5">
+    <app-recipe-list
+    (recipeDescription)="getSelectedDes($event)"
+    (recipeImage)="getSelectedImg($event)"
+    (recipeWasSelected)="selectedRecipe = $event"
+    >
+    </app-recipe-list>
+  </div>
+  <div class="col-md-7">
+    <app-recipe-detail
+    [description]="selectedDescription"
+    [image]="selectedImage"
+    *ngIf="selectedRecipe; else infoText"
+    [recipe]= "selectedRecipe"
+    >
+    </app-recipe-detail>
+    <ng-template #infoText>
+      <strong>Please select a recipe!</strong>
+    </ng-template>
+  </div>
+</div>
